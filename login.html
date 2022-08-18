@@ -5,10 +5,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylesLogin.css" type="text/css">
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -17,23 +17,47 @@
 </head>
 
 <body>
-  <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  
+  
+    <div class="container-form sign-up">
+      <div class="welcome-back">
+        <div class="message">
+          <h2>Bienvenido a e-mercado</h2>
+          <p>Si ya tienes una cuenta inicia sesion aqui</p>
+          <button class="sign-up-btn">Iniciar Sesion</button>
+        </div>
+      </div>
+      <form class="formulario">
+        <h2 class="create-account"><strong>Crear una cuenta</strong> </h2>
+        
+        <p class="cuenta-gratis">Crear una cuenta gratis</p>
+        <input class="nombreApellido" type="text" placeholder="Nombre completo">
+        <input class="email" type="email" placeholder="Email">
+        <input class="passwd" type="password" placeholder="Contraseña">
+        <input class="passwd2" type="password" placeholder="Repetir Contraseña">
+        <input class="btnRegistrar" type="button" value="Registrarse">
+      </form>
+    </div>
+
+    <div class="container-form sign-in">
+      <form class="formulario">
+        <h2 class="create-account"><strong>Iniciar Sesion</strong></h2>     
+        <p class="cuenta-gratis">¿Aun no tienes cuenta?</p>     
+        <input class="emailLogin" type="email" placeholder="Email">
+        <input class="passwdLogin" type="password" placeholder="Contraseña">       
+        <input class="btnIniciarSesion" type="button" value="Iniciar Sesion">
+      </form>
+      <div class="welcome-back">
+        <div class="message">
+          <h2>Bienvenido denuevo</h2>
+          <p>Si aun no tienes una cuenta, por favor registrese aqui </p>
+          <button class="sign-in-btn">Registrarse</button>
+        </div>
       </div>
     </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
+
+  
+  
   <script src="js/login.js"></script>
 </body>
 

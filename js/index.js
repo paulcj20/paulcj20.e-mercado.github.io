@@ -12,3 +12,14 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    localStorage.setItem("logued", "false");
+})
+
+document.addEventListener('DOMContentLoaded',function() {
+    if(localStorage.logued == "false"){
+        window.location = "login.html";
+    }
+} )
+
+
