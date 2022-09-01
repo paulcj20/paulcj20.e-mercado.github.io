@@ -8,18 +8,13 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
     document.getElementById("muebles").addEventListener("click", function() {
-        localStorage.setItem("catID", 103);
+        localStorage.setItem("catID", 103); 
         window.location = "products.html"
     });
 });
-document.addEventListener('DOMContentLoaded', function() {
-    localStorage.setItem("logued", "false");
-})
 
-document.addEventListener('DOMContentLoaded',function() {
-    if(localStorage.logued == "false"){
-        window.location = "login.html";
-    }
-} )
+
+
+
 
 

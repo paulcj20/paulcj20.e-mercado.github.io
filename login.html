@@ -5,10 +5,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/stylesLogin.css" type="text/css">
+  
+
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -28,8 +31,7 @@
         </div>
       </div>
       <form class="formulario">
-        <h2 class="create-account"><strong>Crear una cuenta</strong> </h2>
-        
+        <h2 class="create-account"><strong>Crear una cuenta</strong> </h2>          
         <p class="cuenta-gratis">Crear una cuenta gratis</p>
         <input class="nombreApellido" type="text" placeholder="Nombre completo">
         <input class="email" type="email" placeholder="Email">
@@ -40,12 +42,33 @@
     </div>
 
     <div class="container-form sign-in">
-      <form class="formulario">
-        <h2 class="create-account"><strong>Iniciar Sesion</strong></h2>     
+      
+      <div class="g-signin2" data-onsuccess="onSignIn()"></div>
+      <form class="formulario ">
+        <h2 class="create-account"><strong>Iniciar Sesion</strong></h2>   
+            <div class="googleBtn-container">
+              <div id="g_id_onload"
+                data-client_id="603377894494-rha82obecreqpqorrspkcjnn1vp8u460.apps.googleusercontent.com"
+                data-context="signup"
+                data-ux_mode="popup"
+                data-callback="handleCredentialResponse"
+                data-auto_prompt="false">
+              </div>
+              
+              <div class="g_id_signin"
+                  data-type="standard"
+                  data-shape="pill"
+                  data-theme="filled_black"
+                  data-text="$ {button.text}"
+                  data-size="large"
+                  data-logo_alignment="left">
+              </div>
+            </div>
         <p class="cuenta-gratis">¿Aun no tienes cuenta?</p>     
         <input class="emailLogin" type="email" placeholder="Email">
         <input class="passwdLogin" type="password" placeholder="Contraseña">       
         <input class="btnIniciarSesion" type="button" value="Iniciar Sesion">
+        <p class="login-alert"></p>
       </form>
       <div class="welcome-back">
         <div class="message">
@@ -59,6 +82,8 @@
   
   
   <script src="js/login.js"></script>
+  
+  
 </body>
 
 </html>

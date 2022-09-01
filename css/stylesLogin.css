@@ -30,16 +30,18 @@ align-items: center;
 text-align: center;
 }
 
+
+
 .message {
     padding: 1rem;
 }
 
 .message h2 {
     font-size: 1.7rem;
-    padding: 1rem 0;
+    padding: 1rem 0
 }
 
-.message button {
+.message button { 
     padding: 1rem;
     font-weight: 400;
     background-color: #4a4aee;
@@ -62,6 +64,8 @@ text-align: center;
     padding: 1rem;
     margin: 2rem;
     background-color: rgb(51,51,51, 0.602);
+    border-radius: 15px;
+    
 }
 
 .create-account {
@@ -101,8 +105,15 @@ text-align: center;
     margin-top: 3rem;
     cursor: pointer;
     color: #222;
+    transition: 0.2s;
 }
-  
+
+.formulario input[type="button"]:hover{
+    background-color:rgb(51,51,51, 0.602);
+    border: rgb(51,51,51, 0.602) ;
+    transition: 0.2s;
+}
+
 .sign-up {
     position: absolute;
     opacity: 0;
@@ -115,9 +126,21 @@ text-align: center;
     opacity: 0;
     visibility: hidden;
 }
+
 .sign-up.active{
     transition: .5s;
     opacity: 1;
     visibility: visible;
 }
+
+.login-alert {
+    color: #CC6666;
+    text-align: center;
+    padding: 2rem 2rem;
+}
   
+.googleBtn-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}

@@ -15,6 +15,12 @@ let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+let showMail = function() {
+  const email = localStorage.getItem('email');
+  const pMail = document.querySelector('.email-container');
+  pMail.textContent += email;
+}
+
 let getJSONData = function(url){
     let result = {};
     showSpinner();
@@ -39,3 +45,11 @@ let getJSONData = function(url){
         return result;
     });
 }
+document.addEventListener('DOMContentLoaded', () => {
+  if(sessionStorage.getItem('logued') == undefined || sessionStorage.getItem('logued') == 'false'){
+    sessionStorage.setItem('logued', 'false');
+    window.location = "login.html";
+  }
+  showMail();
+})
+
