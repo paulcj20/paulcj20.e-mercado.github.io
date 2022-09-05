@@ -210,3 +210,9 @@ h4 {
   
   
 }
+
+.input-Filter {
+  margin-right: 1rem;
+  border-style: none;
+  border-radius: 20px;
+}
