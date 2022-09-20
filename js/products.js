@@ -11,9 +11,9 @@ let minCount = undefined;
 let maxCount = undefined;
 let htmlContentToAppend = "";
 
-function HtmlToAppend(image, description, name, soldCount, currency, cost, description) {
+function HtmlToAppend(id, image, description, name, soldCount, currency, cost, description) {
     htmlContentToAppend += `
-            <div  class="list-group-item list-group-item-action cursor-active">
+            <div  onclick="viewProd(${id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${image}" alt="${description}" class="img-thumbnail">
@@ -70,7 +70,7 @@ function showProdList(){
     
     for(let i = 0; i < currentCategorieArray.length; i++){        
         let prod = currentCategorieArray[i];
-            HtmlToAppend(prod.image, prod.description, prod.name, prod.soldCount, prod.currency, prod.cost, prod.description);          
+            HtmlToAppend(prod.id, prod.image, prod.description, prod.name, prod.soldCount, prod.currency, prod.cost, prod.description);          
         
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend;        
     }
@@ -95,14 +95,14 @@ function showLeakedPriceList(){
         if (((minCount == undefined) || (minCount != undefined && parseInt(prod.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(prod.cost) <= maxCount))){
 
-                HtmlToAppend(prod.image, prod.description, prod.name, prod.soldCount, prod.currency, prod.cost, prod.description); 
+                HtmlToAppend(prod.id, prod.image, prod.description, prod.name, prod.soldCount, prod.currency, prod.cost, prod.description); 
         }
 
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
-let llenarPag = function(){   
+let llenarPag = () =>{   
     switch(catId){
         case '101':
         
@@ -151,6 +151,14 @@ let llenarPag = function(){
     showProdList();
 };
 
+// Producto
+
+let viewProd = id => {
+    sessionStorage.setItem("prodId", id );
+    window.location = "product-info.html"
+};
+
+// Escuchadores
 document.addEventListener('DOMContentLoaded', function(e) {
     getJSONData(PRODUCTS_URL+catId+EXT_TYPE).then(function(resultObj){
         if(resultObj.status === "ok"){
