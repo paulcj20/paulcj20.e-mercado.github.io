@@ -13,10 +13,10 @@ let htmlContentToAppend = "";
 
 function HtmlToAppend(id, image, description, name, soldCount, currency, cost, description) {
     htmlContentToAppend += `
-            <div  onclick="viewProd(${id})" class="list-group-item list-group-item-action cursor-active">
+            <div  onclick="viewProd(${id})" class="list-group-item list-group-item-action cursor-active rounded-3 my-1 shadow">
                 <div class="row">
                     <div class="col-3">
-                        <img src="${image}" alt="${description}" class="img-thumbnail">
+                        <img src="${image}" alt="${description}" class="img-thumbnail rounded-3">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">

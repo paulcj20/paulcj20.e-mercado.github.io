@@ -31,7 +31,16 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <p class="nav-link email-container"></p>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle email-container nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+                <li><p class="dropdown-item " onclick="logOut()">Cerrar Sesion</p></li>              
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -40,13 +49,16 @@
   <!-- Main-->
 
   <main class="text-center">
-    <h2 class="product-title my-3 "></h2>
-    <div class="container product-container card rounded-3 mt-2 mb-2 text-center w-75 py-3">
-        <p class="product-price mt-2"><strong class="text-info">Precio: </strong></p>
-        <p class="product-description"><strong class="text-info">Descripción: </strong></p>
-        <p class="product-categorie"><strong class="text-info">Categoría: </strong></p>
-        <p class="product-count"><strong class="text-info">Cantidad de Vendidos: </strong></p>
-        <p class="title mb-1"><strong class="text-info">Imagenes Ilustrativas: </strong></p>
+    <div class="header d-flex justify-content-around">
+      <h2 class="product-title my-3 "></h2>
+      <button class="btn btn-success my-3" id="btnBuy">Comprar</button>
+    </div>
+    <div class="container product-container card rounded-3 mt-2 mb-2 text-center w-75 py-3">              
+        <p class="product-price mt-2"><strong class="text-dark">Precio: </strong></p>
+        <p class="product-description"><strong class="text-dark">Descripción: </strong></p>
+        <p class="product-categorie"><strong class="text-dark">Categoría: </strong></p>
+        <p class="product-count"><strong class="text-dark">Cantidad de Vendidos: </strong></p>
+        <p class="title mb-1"><strong class="text-dark">Imagenes Ilustrativas: </strong></p>
         <div class="product-images row justify-content-center m-4 " style="border-style: solid #1d1d1d ; border-radius: 15px;">
             <img src="" alt="" class="card  product-image1 p-1 m-1 rounded-2 " style="width: 10rem ; height: 10rem;">
             <img src="" alt="" class="card  product-image2 p-1 m-1 rounded-2 "style="width: 10rem ; height: 10rem;">
@@ -61,23 +73,44 @@
       </div>
       
       <h3 class="my-2 ms-1">Comentar</h3>
-      <div class="comentar row text-start">
-        <label for="inputOpinion " class="form-label m-2">Tu opinión</label>
-        <textarea class="form-control-lg w-50 ms-3 input " id="inputOpinion" rows="3"></textarea>
-        <label for="form-floating" class="ms-1 my-2" id="inputEstrellas">Tu Puntuación</label>
-        <select class="form-floating w-25 ms-3 my-3 inputClasificacion" id="inputClasificacion">
-          <option selected>Seleccionar</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <button type="button" class="w-25 m-3  " id="btnEnviar">Enviar</button>
-        <p id="mensajeAlerta" style="color: red; margin-left:.4rem;"></p>
+      <div class="comentar row text-start rounded-3">
+          <label for="inputOpinion " class="form-label m-2">Tu opinión</label>
+          <textarea class="form-control-lg w-50 ms-3 input " id="inputOpinion" rows="3"></textarea>
+          <label for="form-floating" class="ms-1 my-2" id="inputEstrellas">Tu Puntuación</label>
+          <select class="form-floating w-25 ms-3 my-3 inputClasificacion input-group" id="inputClasificacion">
+            <option selected>Seleccionar</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button type="button" class="btn-primary m-3  w-auto rounded-2 " id="btnEnviar" >Enviar</button>
+          <p id="mensajeAlerta" style="color: red; margin-left:.4rem;"></p>
       </div>
-    </div>
-    </main>
+  
+      <h3 class="mb-3">Productos Relacionados</h3>
+      
+      <div class="w-75">
+
+        <div id="carrusel" class="carousel width-50 slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-inner">
+          
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+   
+      </div>
+    
+  </div>
+  </main>
     <!-- Footer --> 
     
   <footer class="text-muted">
@@ -101,6 +134,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/cart.js"></script>
   
 </body>
 

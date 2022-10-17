@@ -3,17 +3,19 @@
 const prodId = sessionStorage.getItem('prodId');
 const catId = localStorage.getItem('catID');
 const container = document.querySelector('.product-container');
+let currentProd = {};
 //Carta Producto
 
-let productTitle = document.querySelector('.product-title');
-let productPrice = document.querySelector('.product-price');
-let productDescription = document.querySelector('.product-description');
-let productCategorie = document.querySelector('.product-categorie');
-let productCount = document.querySelector('.product-count');
-let productImage1 = document.querySelector('.product-image1');
-let productImage2 = document.querySelector('.product-image2');
-let productImage3 = document.querySelector('.product-image3');
-let productImage4 = document.querySelector('.product-image4');
+const productTitle = document.querySelector('.product-title');
+const productPrice = document.querySelector('.product-price');
+const productDescription = document.querySelector('.product-description');
+const productCategorie = document.querySelector('.product-categorie');
+const productCount = document.querySelector('.product-count');
+const productImage1 = document.querySelector('.product-image1');
+const productImage2 = document.querySelector('.product-image2');
+const productImage3 = document.querySelector('.product-image3');
+const productImage4 = document.querySelector('.product-image4');
+const btnBuy = document.getElementById('btnBuy');
 
 // Comentarios
 let contenedorComentarios = document.querySelector('.comentarios');
@@ -69,7 +71,8 @@ let getCategorieArray = () => {
 let getProductInfo = (catName, categorieArray) => {
     for (let prod of categorieArray){
         if(prod.id == prodId){
-            appendProd(catName, prod);
+            appendProd(catName, prod);     
+            currentProd = prod;       
         };
     }
 };
@@ -122,7 +125,62 @@ btnEnviar.addEventListener('click', ()=> {
     };
 });
 
+
+//Productos relacionados
+
+let getRelProds = () => {
+    getJSONData(PRODUCT_INFO_URL+prodId+".json").then( function(resultObj) {
+        if(resultObj.status === "ok"){
+            appendRelProd(resultObj.data.relatedProducts);
+        }
+    });
+};
+
+let carrusel = document.getElementById('carrusel');
+let carruselInner = document.querySelector('.carousel-inner');
+let appendRelProd = (arreglo) => {
+    let htmlToAppend = "";   
+    for(let i = 0; i <= arreglo.length -1; i++){
+        if(i == 1){
+            carruselInner.innerHTML += `
+          <div class="carousel-item active">
+            <img src="${arreglo[i].image}" class="d-block w-100" alt="#">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>${arreglo[i].name}</h5>
+            </div>
+          </div>
+          `;
+        }else{
+
+            carruselInner.innerHTML += `
+          <div class="carousel-item ">
+          <img src="${arreglo[i].image}" class="d-block w-100" alt="#">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>${arreglo[i].name}</h5>
+            </div>
+          </div>
+          `;
+        }
+    }   
+};
+
+//Boton comprar 
+
+btnBuy.addEventListener('click', () => {
+    let retorno = {
+        id: currentProd.id,
+        name: currentProd.name,
+        count: 1,
+        unitCost: currentProd.cost,
+        currency: currentProd.currency,
+        image: currentProd.image
+    };
+    addProductToCart(retorno);
+    console.log(retorno);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     getCategorieArray();
     getCommentsArray();
+    getRelProds();
 });

@@ -30,17 +30,73 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle email-container nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+                <li><p class="dropdown-item " onclick="logOut()">Cerrar Sesion</p></li>    
+              </ul>         
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <h4 class="text-center card-title my-3">Carrito de compras</h4>
+    <div class="container-fluid w-75 m-auto table-striped text-center align-middle ">
+      <div class="text-start fs-4 ms-1 mb-2"><p>Artículos a comprar</p></div>
+      <!--TABLA-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scoope="col"></th>
+            <th scoope="col">Nombre</th>
+            <th scoope="col">Costo</th>
+            <th scoope="col">Cantidad</th>
+            <th scoope="col">Subtotal</th>
+          </tr>
+        </thead>
+
+        <tbody class="table-container maxwid">
+
+        </tbody>
+      </table>
+      <!--ENVIO-->
+      <div class="envio text-start row w-50 ">
+        <h4>Tipo de envío</h4>
+        <input type="radio" class="btn-check" name="envio" id="premium">
+        <label for="premium" class="btn btn-light mb-2">Premium 2 a 5 días (15%)</label>
+        <input type="radio" class="btn-check" name="envio" id="express">
+        <label for="express" class="btn btn-light mb-2">Express 5 a 9 días (7%)</label>
+        <input type="radio" class="btn-check" name="envio" id="standard">
+        <label for="standard" class="btn btn-light mb-2">Standard 12 a 15 días (5%)</label>
+
+        <h4>Direccion de envío</h4>
+
+        <div class="directionInput ms-0">
+          <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
+            <span class="input-group-text " id="inputGroup">Calle</span>
+            <input type="text" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup">
+          </div>
+          <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
+            <span class="input-group-text " id="inputGroup">Numero</span>
+            <input type="text" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup">
+          </div>
+          <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
+            <span class="input-group-text " id="inputGroup">Esquina</span>
+            <input type="text" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup">
+          </div>
+        </div>
+      
+      
       </div>
     </div>
+
+
   </main>
   <footer class="text-muted">
     <div class="container">

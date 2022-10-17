@@ -6,6 +6,8 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+//botones
+const btnlogOut = document.getElementById('logOut');
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -20,6 +22,12 @@ let showMail = function() {
   const pMail = document.querySelector('.email-container');
   pMail.textContent += email;
 }
+
+let logOut = () =>{
+  sessionStorage.clear();
+  localStorage.clear();
+  window.location = "login.html";
+};
 
 let getJSONData = function(url){
     let result = {};
@@ -45,6 +53,10 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+//btnlogOut.addEventListener('click', logOut());
+
 document.addEventListener('DOMContentLoaded', () => {
   if(sessionStorage.getItem('logued') == undefined || sessionStorage.getItem('logued') == 'false'){
     sessionStorage.setItem('logued', 'false');
