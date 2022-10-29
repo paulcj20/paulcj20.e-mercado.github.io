@@ -68,14 +68,17 @@ let getCategorieArray = () => {
     });
 };
 
-let getProductInfo = (catName, categorieArray) => {
-    for (let prod of categorieArray){
-        if(prod.id == prodId){
-            appendProd(catName, prod);     
-            currentProd = prod;       
-        };
-    }
+let getProdInfo = () => {
+    getJSONData(PRODUCT_INFO_URL+prodId+".json").then( function(resultObj) {
+        if(resultObj.status === "ok"){
+            appendRelProd(resultObj.data.relatedProducts);
+            currentProd = resultObj.data;
+            appendProd(resultObj.data.category , currentProd)
+            console.log(currentProd);
+        }
+    });
 };
+
 
 let appendProd = (catName, prod) => {
     productTitle.innerHTML += prod.name;
@@ -128,13 +131,7 @@ btnEnviar.addEventListener('click', ()=> {
 
 //Productos relacionados
 
-let getRelProds = () => {
-    getJSONData(PRODUCT_INFO_URL+prodId+".json").then( function(resultObj) {
-        if(resultObj.status === "ok"){
-            appendRelProd(resultObj.data.relatedProducts);
-        }
-    });
-};
+
 
 let carrusel = document.getElementById('carrusel');
 let carruselInner = document.querySelector('.carousel-inner');
@@ -173,14 +170,15 @@ btnBuy.addEventListener('click', () => {
         count: 1,
         unitCost: currentProd.cost,
         currency: currentProd.currency,
-        image: currentProd.image
+        image: currentProd.images[0]
     };
+
     addProductToCart(retorno);
     console.log(retorno);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    getCategorieArray();
+    
     getCommentsArray();
-    getRelProds();
+    getProdInfo();
 });

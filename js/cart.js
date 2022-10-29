@@ -1,20 +1,10 @@
 const table = document.querySelector('.table-container');
-let cart = [];
 
 const getCart = () => {
-    if(localStorage.getItem('cart') == undefined){
-        getJSONData(CART_INFO_URL+"25801.json").then(function(resultObj) {
-            if(resultObj.status == "ok"){
-                appendProducts(resultObj.data.articles);   
-                cart = resultObj.data.articles;        
-                localStorage.setItem('cart', JSON.stringify(cart)); 
-                
-            };
-        })
-    }else {
+    let cart = localStorage.getItem('cart');
+    if(cart != ''){
         cart = JSON.parse(localStorage.getItem('cart'));
         appendProducts(cart);
-        
     }
 };
 
@@ -45,21 +35,12 @@ const addListeners = () => {
                     let pSubTotal = document.getElementById('p' + inputId); 
                     let subTotal = input.value * product.unitCost;
                     pSubTotal.innerHTML = product.currency + " " + subTotal;                   
-                }
-            }
+                };
+            };
 
-        })
-    }
+        });
+    };
 };
-
-const addProductToCart =  product  => {
-    window.location = "cart.html";     
-    
-    
-};
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     getCart();
