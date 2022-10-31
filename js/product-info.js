@@ -174,7 +174,7 @@ btnBuy.addEventListener('click', () => {
     };
 
     addProductToCart(retorno);
-    console.log(retorno);
+    
 });
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -12,6 +12,50 @@
 </head>
 
 <body>
+  <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="" class="need-validation" novalidate>
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Forma de Pago</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" class="needs-validation" novalidate>
+              <input required type="radio" class="form-check-input" name="pay" id="credit-card">
+              <label for="creditCard" class="form-check-label">Tarjeta de crédito</label>
+
+              <hr>
+              <label for="card-number" class="col-form-label">Numero de tarjeta</label>
+              <input required type="text" class="form-control" id="card-number">
+
+              <label for="segurity-code" class="col-form-label">Código de seg.</label>
+              <input required type="text" class="form-control" id="segurity-code">
+
+              <label for="expiration" class="col-form-label">Vencimiento(MM/AA)</label>
+              <input required type="text" class="form-control mb-2" id="expiration">
+
+              <input required type="radio" class="form-check-input" name="pay" id="wire-transfer">
+              <label for="wire-transfer" class="form-check-label">Tranferencia bancaria</label>
+              <hr>
+    
+            <label for="count-number" class="col-form-label">Número de cuenta</label>
+            <input required type="text" class="form-control" id="count-number">
+            
+
+            </form>
+            <!--Nuevo-->
+            
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -58,6 +102,7 @@
             <th scoope="col">Costo</th>
             <th scoope="col">Cantidad</th>
             <th scoope="col">Subtotal</th>
+            <th scoope="col"></th>
           </tr>
         </thead>
 
@@ -68,54 +113,80 @@
       <!--ENVIO-->
       <div class="envio text-start row w-50 ">
         <h4>Tipo de envío</h4>
-        <input type="radio" class="btn-check" name="envio" id="premium">
-        <label for="premium" class="btn btn-light mb-2">Premium 2 a 5 días (15%)</label>
-        <input type="radio" class="btn-check" name="envio" id="express">
-        <label for="express" class="btn btn-light mb-2">Express 5 a 9 días (7%)</label>
-        <input type="radio" class="btn-check" name="envio" id="standard">
-        <label for="standard" class="btn btn-light mb-2">Standard 12 a 15 días (5%)</label>
-
+          <div>
+            <form action="" class="needs-validation" novalidate>
+              <input type="radio" class="btn-check shippingType form-control" name="envio" id="premium">
+              <label for="premium" class="btn btn-outline-dark mb-2">Premium 2 a 5 días (15%)</label>
+              <input type="radio" class="btn-check shippingType form-control" name="envio" id="express">
+              <label for="express" class="btn btn-outline-dark mb-2">Express 5 a 9 días (7%)</label>
+              <input type="radio" class="btn-check shippingType form-control" name="envio" id="standard">
+              <label for="standard" class="btn btn-outline-dark mb-2">Standard 12 a 15 días (5%)</label>
+              <div class="invalid-feedback">Debe seleccionar tipo de envio</div>
+            </form>
+          </div>
         <h4>Direccion de envío</h4>
 
         <div class="directionInput ms-0 mb-3">
-          <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
-            <span class="input-group-text " id="inputGroup">Calle</span>
-            <input type="text" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup">
-          </div>
-          <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
-            <span class="input-group-text " id="inputGroup">Numero</span>
-            <input type="text" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup">
-          </div>
-          <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
-            <span class="input-group-text " id="inputGroup">Esquina</span>
-            <input type="text" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup">
-          </div>
+          <form action="get" class="needs-validation" novalidate>
+            <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
+              <span class="input-group-text " id="inputGroup">Calle</span>
+              <input type="text" id="input-street" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup" required>
+              <div class="invalid-feedback">Ingrese una calle</div>
+            </div>
+            <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
+              <span class="input-group-text " id="inputGroup">Numero</span>
+              <input type="text" id="input-number" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup" required>
+              <div class="invalid-feedback">Ingrese numero de puerta</div>
+            </div>
+            <div class="input-group input-group-sm my-2 col-sm-12 col-md-8 col-lg-5">
+              <span class="input-group-text " id="inputGroup">Esquina</span>
+              <input type="text" id="input-corner" class="form-control col-6" aria-label="Sizing example input" aria-describedby="inputGroup" required>
+              <div class="invalid-feedback">Ingrese una esquina</div>
+            </div>
+            
+          </form>
         </div>
           
       </div>
       <!--COSTO-->
+
+      
       <div class="cost justify-content-center d-flex row">
+        <h4 class="text-start w-75">Costos</h4>
         <div class="subtotal w-75  justify-content-around d-flex " style="max-height: 4rem;" >
           <div class="text-start text-dark  justify-content-around ">
             <p class="fs-5 mb-0 ms-3" id="sub">Subtotal</p>
-            <small class="mt-0 text-dark " >Costo unitario del producto por cantidad</small>
+            <small class="mt-0 ms-3 text-dark " >Costo unitario del producto por cantidad</small>
           </div>
-          <p class="card-body text-dark text-end my-0 " id="pSubtotal">Hola</p>
+          <p class="card-body text-dark text-end my-0 " id="pSubtotal"></p>
         </div>
 
         <div class="costo_envio subtotal w-75  justify-content-around d-flex" style="max-height: 4rem;"> 
           <div class="text-start text-dark  justify-content-around ">
             <p class="fs-5 mb-0 ms-3" id="env">Envío</p>
-            <small class="mt-0 text-dark " >Según el tipo de envío</small>
+            <small class="mt-0 ms-3 text-dark " >Según el tipo de envío</small>
           </div>
-          <p class="card-body text-dark text-end my-0 " id="pEnvio">Hola</p>
+          <p class="card-body text-dark text-end my-0 " id="pEnvio"></p>
         </div>
-        <div class="total d-flex w-75 justify-content-around" style="max-height: 4rem;">
-          <p class="fs-5 mb-0 ms-3">Total($)</p>
-          <p class="" id="pTotal">Hola</p>
+        <div class="costo_envio subtotal w-75  justify-content-around d-flex" style="max-height: 3rem;"> 
+          <p class="fs-5 mb-0 ms-3 mt-2" >Total($)</p>          
+          <p class="card-body text-dark text-end my-0 " id="pTotal"></p>
         </div>
 
       </div> 
+
+      <div class="container  text-start pay w-75">
+        <hr class="my-4">
+        <h4 class="">Forma de pago</h4>
+        <div class="d-flex col">
+          <p class="payMessage me-2">No se ha seleccionado <button type="submit" class="btn mt-2 form text-decoration-underline text-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Seleccionar
+          </button></p>
+          <div class="invalid-feedback">Debe seleccionar forma de pago</div>
+          
+        </div>
+        <button class="btn btn-primary  w-100" type="submit" id="checkout">Finalizar Compra</button>
+      </div>
     </div>
 
 
