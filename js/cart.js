@@ -62,7 +62,9 @@ const addListeners = () => {
                     let pSubTotal = document.getElementById('p' + inputId); 
                     let subTotal = input.value * product.unitCost;
                     pSubTotal.innerHTML = product.currency + " " + subTotal;
-                    setPrices();                   
+                    setPrices(); 
+                    product.count = input.value;
+                    localStorage.setItem('cart', JSON.stringify(varCart));                  
                 }; 
             };
 
@@ -153,23 +155,130 @@ const inputCorner = document.getElementById('input-corner');
 
 const btnCheckout = document.getElementById('checkout');
 
-btnCheckout.addEventListener('click', () => {
-    
-});
 
+let checkShipping = () => {
+    if(premium.checked || express.checked || standard.checked){
+        document.getElementById('shipping-feedback').classList.add('d-none');
+    }else {
+        document.getElementById('shipping-feedback').classList.remove('d-none');
+    }
+};
+
+let checkDirection = () => {
+    if(!inputStreet.value){
+        inputStreet.classList.remove('is-valid');
+        inputStreet.classList.add('is-invalid');
+    }else {
+        inputStreet.classList.remove('is-invalid');
+        inputStreet.classList.add('is-valid');
+    }
+    if (!inputNumber.value) {
+        inputNumber.classList.remove('is-valid');
+        inputNumber.classList.add('is-invalid');
+    }else {
+        inputNumber.classList.remove('is-invalid');
+        inputNumber.classList.add('is-valid');
+    }
+    if (!inputCorner.value){
+        inputCorner.classList.remove('is-valid');
+        inputCorner.classList.add('is-invalid');
+    }else {
+        inputCorner.classList.remove('is-invalid');
+        inputCorner.classList.add('is-valid');
+    }
+};
+
+let checkModalValidity = () => {
+    const formulario = document.getElementById('form-modal');
+    formulario.addEventListener('submit', function(event){  
+            if (!form.checkValidity()) {
+              
+            }
+            form.classList.add('was-validated')
+          
+    });
+};
+
+const cbCreditCard = document.getElementById('cretit-card');
+const cbWireTransfer = document.getElementById('wire-transfer');
+const inputCardNumber = document.getElementById('card-number');
+const inputSeguriryCode = document.getElementById('segurity-code');
+const inputExpiration = document.getElementById('expiration');
+const inputCountNumber = document.getElementById('count-number');
+const btnSubmitPayMethod = document.getElementById('btnSubmitPayMethod');
+const pPayMethod = document.getElementById('pPayMethod');
+
+let checkModal = () => {
+    if(cbCreditCard.checked){
+        if(!inputCardNumber.value){
+            inputCardNumber.classList.remove('is-valid')
+            inputCardNumber.classList.add('is-invalid')
+        }else{
+            inputCardNumber.classList.remove('is-invalid')
+            inputCardNumber.classList.add('is-valid');
+        }
+        if(!inputSeguriryCode.value){
+            inputSeguriryCode.classList.remove('is-valid');
+            inputSeguriryCode.classList.add('is-invalid');
+        }else {
+            inputSeguriryCode.classList.remove('is-invalid');
+            inputSeguriryCode.classList.add('is-valid');
+        }
+        if(!inputExpiration.value){
+            inputExpiration.classList.remove('is-valid');
+            inputExpiration.classList.add('is-invalid');
+        }else {
+            inputExpiration.classList.remove('is-invalid');
+            inputExpiration.classList.add('is-valid');
+        }
+    }else if(cbWireTransfer.checked){
+        if(!inputCountNumber.value){
+            inputCountNumber.classList.remove('is-valid');
+            inputCountNumber.classList.add('is-invalid');
+        }else {
+            inputCountNumber.classList.remove('is-invalid');
+            inputCountNumber.classList.add('is-valid');
+        }
+    }else {
+        
+    }
+};
 
 //Borrar producto
 
 let removeProduct = prodId => {
     for( let i = 0; i < varCart.length; i++){
         if(varCart[i].id == prodId){
-           
             varCart.splice(i, 1); 
             localStorage.setItem('cart', JSON.stringify(varCart));   
             getCart();
         }
     }
 };
+
+// escuchadores
+
+cbCreditCard.addEventListener('click', () => {
+    if(cbCreditCard.checked){
+        pPayMethod.value = 'Tarjeta de crédito';
+        console.log('hola');
+    }
+});
+
+cbWireTransfer.addEventListener('click', () => {
+    if(cbWireTransfer.checked){
+        pPayMethod.value = 'Tranferencia bancaria';
+    }
+});
+
+btnCheckout.addEventListener('click', () => {
+    checkShipping();
+    checkDirection();
+});
+
+btnSubmitPayMethod.addEventListener('click', () => {
+    checkModal(); 
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     getCart();

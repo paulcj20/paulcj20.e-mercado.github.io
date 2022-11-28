@@ -61,9 +61,55 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="alert alert-danger position-absolute col d-none justify-content-between align-items-center " style="height:4rem ;" id="modal-invalid-feedback" role="alert" >
+      <h4>Debe completar los campos con *</h4>
+    </div>
+    <div class="profile-container  col-8 m-auto  ">
+      <div class="d-flex justify-content-between align-items-center mt-1 me-2">
+        <h4 class="my-2">Perfil</h4>
+        <div id="container-image" ></div>
+      </div>
+
+      <hr>
+      <div class="inputs-container input-group row g-3" >
+        <div class="col-sm-12 col-md-6 ">
+          <label  class="form-label" for="first-name">Primer nombre*</label>
+          <input type="text"  class="form-control " name" id="first-name">
+        </div>
+        <div class="col-sm-12 col-md-6 ">
+
+          <label  class="form-label" for="second-name">Segundo nombre</label>
+          <input type="text"  class="form-control "  id="second-name">
+        </div>
+        <div class="col-sm-12 col-md-6 ">
+
+          <label  class="form-label" for="first-surname">Primer apellido*</label>
+          <input type="text"  class="form-control " id="first-surname">
+        </div>
+        <div class="col-sm-12 col-md-6 ">
+
+          <label  class="form-label" for="second-surname">Segundo apellido</label>
+          <input type="text"  class="form-control "  id="second-surname">
+        </div>
+
+        <div class="col-sm-12 col-md-6 ">
+
+          <label  class="form-label" for="email">E-mail</label>
+          <input type="text"  class="form-control "  id="email">
+        </div>
+        <div class="col-sm-12 col-md-6 ">
+
+          <label  class="form-label" for="tel">Teléfono de contacto *</label>
+          <input type="text"  class="form-control " id="tel">
+        </div>
+
+        <div class=" col-sm-12 col-md-6 ">
+          <input type="file" class="form-control" id="inputImage"  aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+        </div>
+
+        <div class="col-sm-12 col-md-8 ">
+          <button class="btn btn-primary rounded-3 " id="btn-accept">Aceptar</button>
+        </div>
       </div>
     </div>
   </main>
